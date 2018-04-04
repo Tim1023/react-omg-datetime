@@ -1,6 +1,6 @@
 {
   "name": "react-omg-datetime",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A date and time picker in the same React.js component.",
   "main": "lib/index.js",
   "scripts": {
