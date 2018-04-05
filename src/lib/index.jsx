@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 
-const MySuperCoolComponent = ({ children, color }) => (
-  <button style={{ color }}>{children}</button>
-);
+class DateTimeInput extends Component {
 
-export default MySuperCoolComponent;
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...props,
+      value: Date(),
+    }
+  }
+
+  render() {
+    return (
+      <div>{this.state.value}</div>
+    )
+  }
+}
+
+export default DateTimeInput;
