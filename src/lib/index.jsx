@@ -49,14 +49,16 @@ export default class DateTimeInput extends Component {
 
   render() {
     return (
-      <div onClick={this.onOpen} className={styles.wrap}>
-        <label className={this.state.labelClass}>
-          DateTimePicker</label>
-        <div className={[styles.j343, styles.j344, styles.j347].join(' ')}>
-          <input className={styles.input}
-                 value={this.state.displayValue}
-                 onBlur={this.onClose}
-                 onChange={this.trueChange} />
+      <div className={styles.wrap}>
+        <div onClick={this.onOpen} className={styles.topWrap}>
+          <label className={this.state.labelClass}>
+            DateTimePicker</label>
+          <div className={[styles.j343, styles.j344, styles.j347].join(' ')}>
+            <input className={styles.input}
+                   value={this.state.displayValue}
+                   onBlur={this.onClose}
+                   onChange={this.trueChange} />
+          </div>
         </div>
         <Modal/>
       </div>
