@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./styles.css";
-
+import Modal from "./Modal";
 
 export default class DateTimeInput extends Component {
 
@@ -57,8 +57,8 @@ export default class DateTimeInput extends Component {
                  value={this.state.displayValue}
                  onBlur={this.onClose}
                  onChange={this.trueChange} />
-
         </div>
+        <Modal/>
       </div>
     )
   }
