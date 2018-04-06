@@ -6,7 +6,7 @@ function Demo() {
   return (
     <div>
       <h1>Demo with examples of the component</h1>
-      <DateTimeInput/>
+      <DateTimeInput value={new Date(2018, 4, 4, 2, 0, 0)} />
     </div>
   );
 }

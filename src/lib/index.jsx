@@ -7,11 +7,23 @@ export default class DateTimeInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: Date(),
+      value: new Date(),
       open: false,
       ...props,
       labelClass:[styles.j337, styles.j332, styles.j333, styles.j336, styles.j335].join(' '),
+      displayValue:'',
     }
+  }
+
+  componentDidMount(){
+    const Day = this.state.value.getDate()>9?this.state.value.getDate():'0'+this.state.value.getDate()
+    const Month = this.state.value.getMonth()>9?this.state.value.getMonth():'0'+this.state.value.getMonth()
+    const Year = this.state.value.getFullYear()
+    const Hours = this.state.value.getHours()>9?this.state.value.getHours():'0'+this.state.value.getHours()
+    const Minutes = this.state.value.getMinutes()>9?this.state.value.getMinutes():'0'+this.state.value.getMinutes()
+    this.setState({
+      displayValue:`${Day}/${Month}/${Year}, ${Hours}:${Minutes}`
+    })
   }
 
   onOpen = () => {
@@ -32,7 +44,7 @@ export default class DateTimeInput extends Component {
         <label className={this.state.labelClass}>
           DateTimePicker</label>
         <div className={[styles.j343, styles.j344, styles.j347].join(' ')}>
-          <input className={styles.input} defaultValue={this.state.value} onBlur={this.onClose}  />
+          <input className={styles.input} value={this.state.displayValue} onBlur={this.onClose}/>
 
         </div>
       </div>
