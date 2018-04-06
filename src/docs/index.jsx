@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
 import DateTimeInput from "../../lib";
-import "./styles.css";
 
 function Demo() {
   return (

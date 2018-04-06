@@ -1,20 +1,31 @@
 import React, { Component } from "react";
+import styles from "./styles.css";
 
-class DateTimeInput extends Component {
+
+export default class DateTimeInput extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      ...props,
       value: Date(),
+      open: false,
+      ...props,
     }
   }
 
+  onOpen = () => {
+    this.setState({
+      open: true
+    })
+  }
+
   render() {
+    console.log(styles.wrap)
     return (
-      <div>{this.state.value}</div>
+      <div onClick={this.onOpen} className={styles.wrap} >
+        <input defaultValue={this.state.value} />
+      </div>
     )
   }
 }
 
-export default DateTimeInput;
