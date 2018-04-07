@@ -229,7 +229,9 @@ label + .j344 {
     padding: 0;
     list-style: none;
     position: absolute;
-    z-index: 1050
+    z-index: 1050;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
 }
 
 .calendarPanel {
@@ -266,8 +268,7 @@ label + .j344 {
 .calendarPrevYearBtn,
 .calendarPrevMonthBtn,
 .calendarNextYearBtn,
-.calendarNextMonthBtn
-{
+.calendarNextMonthBtn {
     position: absolute;
     top: 0;
     color: rgba(0, 0, 0, .45);
@@ -293,6 +294,7 @@ label + .j344 {
 .calendarPrevMonthBtn::after {
     content: "\2039";
 }
+
 .calendarNextMonthBtn {
     right: 29px;
 }
@@ -300,6 +302,7 @@ label + .j344 {
 .calendarNextMonthBtn::after {
     content: "\203A";
 }
+
 .calendarNextYearBtn {
     right: 7px;
 }
@@ -307,6 +310,7 @@ label + .j344 {
 .calendarNextYearBtn::after {
     content: "\BB";
 }
+
 .calendarYearSelect,
 .calendarMonthSelect {
     padding: 0 2px;
@@ -316,3 +320,28 @@ label + .j344 {
     line-height: 40px;
 }
 
+/*CALENDARBODY*/
+.calendarBody {
+    padding: 8px 12px;
+}
+
+.calendarTable {
+    border: 0;
+    text-align: center;
+    border-collapse: collapse;
+    max-width: 100%;
+    background-color: transparent;
+    width: 100%;
+}
+
+.calendarColumnHeader {
+    line-height: 18px;
+    width: 33px;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.calendarColumnHeaderInner {
+    display: block;
+    font-weight: 400;
+}

@@ -11,20 +11,22 @@ export default class DateTimeInput extends Component {
       open: false,
       ...props,
       labelClass: [styles.j337, styles.j332, styles.j333, styles.j336, styles.j335].join(' '),
-      displayValue: '',
-      tempValue: null
+      tempValue: null,
+      displayValue: ''
     }
   }
 
   componentDidMount() {
-    const Day = this.state.value.getDate() > 9 ? this.state.value.getDate() : '0' + this.state.value.getDate()
-    const Month = this.state.value.getMonth() > 9 ? this.state.value.getMonth() : '0' + this.state.value.getMonth()
-    const Year = this.state.value.getFullYear()
-    const Hours = this.state.value.getHours() > 9 ? this.state.value.getHours() : '0' + this.state.value.getHours()
-    const Minutes = this.state.value.getMinutes() > 9 ? this.state.value.getMinutes() : '0' + this.state.value.getMinutes()
-    this.setState({
-      displayValue: `${Day}/${Month}/${Year}, ${Hours}:${Minutes}`
-    })
+    this.props.seconds ? this.setState({displayValue: this.state.value.toLocaleString()})
+      : this.setState({
+        displayValue: this.state.value.toLocaleString([], {
+          year:'numeric',
+          month:'numeric',
+          day:'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      })
   }
 
   onOpen = () => {
@@ -59,7 +61,7 @@ export default class DateTimeInput extends Component {
                    onChange={this.trueChange} />
           </div>
         </div>
-        <Modal open={this.state.open} onClose={this.onClose}/>
+        <Modal open={this.state.open} onClose={this.onClose} value={this.state.value} />
       </div>
     )
   }

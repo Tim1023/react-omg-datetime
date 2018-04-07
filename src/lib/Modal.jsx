@@ -24,12 +24,54 @@ export default class Modal extends React.Component {
 
             <a className={styles.calendarPrevYearBtn} />
             <a className={styles.calendarPrevMonthBtn} />
-            <a className={styles.calendarMonthSelect}>April</a>
-            <a className={styles.calendarYearSelect}>2018</a>
+            <a className={styles.calendarMonthSelect}>{this.state.value.toLocaleString([], { month: "short" })}</a>
+            <a className={styles.calendarYearSelect}>{this.state.value.toLocaleString([], { day: "2-digit" })}</a>
             <a className={styles.calendarNextMonthBtn} />
             <a className={styles.calendarNextYearBtn} />
           </div>
-          Calendar
+          <div className={styles.calendarBody}>
+            <table className={styles.calendarTable}>
+              <thead>
+              <tr role={'row'}>
+                <th role={'columnHeader'} title={'Sun'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Su
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Mon'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Mo
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Tue'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Tu
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Wed'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  We
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Thu'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Th
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Fri'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Fr
+                </span>
+                </th>
+                <th role={'columnHeader'} title={'Sat'} className={styles.calendarColumnHeader}>
+                <span className={styles.calendarColumnHeaderInner}>
+                  Sa
+                </span>
+                </th>
+              </tr>
+              </thead>
+            </table>
+          </div>
 
         </div>
       </div>
