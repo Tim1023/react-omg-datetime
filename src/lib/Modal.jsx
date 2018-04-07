@@ -7,14 +7,18 @@ export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...props
+      ...props,
     }
   }
 
 
   render() {
     return (
-      <div className={styles.calendarWrap}>
+      <div className={styles.calendarWrap}
+           tabIndex={0}
+           onBlur={this.props.onClose}
+           style={{display: this.props.open ? 'block' : 'none'}}
+      >
         <div className={styles.calendarPanel}>
           <div className={styles.calendarHeader}>
 

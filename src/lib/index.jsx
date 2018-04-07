@@ -56,11 +56,10 @@ export default class DateTimeInput extends Component {
           <div className={[styles.j343, styles.j344, styles.j347].join(' ')}>
             <input className={styles.input}
                    value={this.state.displayValue}
-                   onBlur={this.onClose}
                    onChange={this.trueChange} />
           </div>
         </div>
-        <Modal/>
+        <Modal open={this.state.open} onClose={this.onClose}/>
       </div>
     )
   }
