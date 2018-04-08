@@ -59,8 +59,8 @@ export default class DateTimeInput extends Component {
     return (
       <div className="wrap">
         <div onClick={this.onOpen} className="topWrap">
-          <label className="this.state.labelClass">
-            DateTimePicker</label>
+          <label className={this.state.labelClass}>
+            {this.props.label}</label>
           <div className="j343 j344 j347">
             <input className="dateTimeInput"
                    value={this.state.displayValue} />

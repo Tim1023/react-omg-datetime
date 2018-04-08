@@ -12,6 +12,7 @@ function Demo() {
       <h1>Demo with examples of the component</h1>
       <DateTimeInput value={new Date(2018, 3, 4, 2, 0, 0)}
                      onChange={onChange}
+                     label={'DateTimePicker'}
                   // seconds
       />
       <div style={{width: 500, height: 200, backgroundColor: '#009688',color:'white',fontSize:20,padding:10,marginTop:25}}>
