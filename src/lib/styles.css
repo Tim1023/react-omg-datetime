@@ -377,6 +377,17 @@ label + .j344 {
     color: rgba(0, 0, 0, .25);
 }
 
+.selectedDateColor {
+    background: #1890ff;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.selectedDateColor:hover {
+    background: #1890ff;
+    color: #fff;
+}
+
 .calendarToday {
     background: rgba(0, 0, 0, .25);
     color: #fff;

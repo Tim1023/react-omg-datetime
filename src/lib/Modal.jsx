@@ -8,6 +8,7 @@ export default class Modal extends React.Component {
     super(props);
     this.state = {
       ...props,
+      selectedDate: null,
     }
   }
 
@@ -65,8 +66,12 @@ export default class Modal extends React.Component {
     })
   }
 
-  handleSelectedMonthClick = () => {
-
+  handleSelectedMonthClick = (col) => {
+    const copyDate = new Date(this.state.value.getTime())
+    const selectedDate = new Date(copyDate.setDate(col))
+    this.setState({
+      selectedDate: selectedDate
+    })
   }
 
   render() {
@@ -144,15 +149,28 @@ export default class Modal extends React.Component {
                               new Date().getFullYear() === this.state.value.getFullYear()
                               && new Date().getMonth() === this.state.value.getMonth()
                               && new Date().getDate() === col ?
-                                //Selected Month Today
-                                <div className={styles.calendarDate + ' ' + styles.calendarToday}
-                                     onClick={this.handleSelectedMonthClick}
-                                     aria-selected="false"
-                                     aria-disabled="false">{col}</div> :
+                                this.state.selectedDate
+                                && this.state.selectedDate.getDate() === col ?
+                                  <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
+                                       onClick={() => this.handleSelectedMonthClick(col)}
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div> :
+                                  //Selected Month Today
+                                  <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                       onClick={() => this.handleSelectedMonthClick(col)}
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div> :
                                 //Selected Month Date
-                                <div className={styles.calendarDate}
-                                     aria-selected="false"
-                                     aria-disabled="false">{col}</div> :
+                                this.state.selectedDate
+                                && this.state.selectedDate.getDate() === col ?
+                                  <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
+                                       onClick={() => this.handleSelectedMonthClick(col)}
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div> :
+                                  <div className={styles.calendarDate}
+                                       onClick={() => this.handleSelectedMonthClick(col)}
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div> :
                               //After Selected Month Today
                               col - rowOrder < -5
                               && new Date().getFullYear() === this.state.value.getFullYear()
