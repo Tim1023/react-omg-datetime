@@ -11,23 +11,59 @@ export default class Modal extends React.Component {
     }
   }
 
+  renderRows = () => {
+    const month = new Date(this.state.value.getFullYear(), this.state.value.getMonth() + 1, 0)
+    const preMonth = new Date(this.state.value.getFullYear(), this.state.value.getMonth(), 0)
+    const dates = month.getDate()
+    const preDates = preMonth.getDate()
+    const firstDayInWeek = new Date(month.setDate(1)).getDay()
+    const daysArray = Array.from(new Array(dates), (val, index) => index + 1)
+    for (let i = 0; i < firstDayInWeek; i++) {
+      daysArray.unshift(preDates - i)
+    }
+    for (let i = 0; daysArray.length < 42; i++) {
+      daysArray.push(i + 1)
+    }
+    return array_chunks(daysArray, 7)
+  }
+
+  handlePreYear = () => {
+    const preYear = this.state.value.getFullYear() - 1
+    const copyDate = new Date(this.state.value.getTime())
+    const preYearDate = new Date(copyDate.setFullYear(preYear))
+    this.setState({
+      value: preYearDate
+    })
+  }
+  handleNextYear = () => {
+    const preYear = this.state.value.getFullYear() + 1
+    const copyDate = new Date(this.state.value.getTime())
+    const preYearDate = new Date(copyDate.setFullYear(preYear))
+    this.setState({
+      value: preYearDate
+    })
+  }
+  handlePreMonth = () => {
+    const preMonth = this.state.value.getMonth() - 1
+    if(!preMonth){
+      this.handleNextYear()
+    }
+    const copyDate = new Date(this.state.value.getTime())
+    const preYearDate = new Date(copyDate.setMonth(preMonth))
+    this.setState({
+      value: preYearDate
+    })
+  }
+  handleNextMonth = () => {
+    const preMonth = this.state.value.getMonth() + 1
+    const copyDate = new Date(this.state.value.getTime())
+    const preYearDate = new Date(copyDate.setMonth(preMonth))
+    this.setState({
+      value: preYearDate
+    })
+  }
 
   render() {
-    const rows = () => {
-      const month = new Date(this.state.value.getFullYear(), this.state.value.getMonth() + 1, 0)
-      const preMonth = new Date(this.state.value.getFullYear(), this.state.value.getMonth(), 0)
-      const dates = month.getDate()
-      const preDates = preMonth.getDate()
-      const firstDayInWeek = new Date(month.setDate(1)).getDay()
-      const daysArray = Array.from(new Array(dates), (val, index) => index + 1)
-      for (let i = 0; i < firstDayInWeek; i++) {
-        daysArray.unshift(preDates - i)
-      }
-      for (let i = 0; daysArray.length < 42; i++) {
-        daysArray.push(i + 1)
-      }
-      return array_chunks(daysArray, 7)
-    }
     let rowOrder = 0;
     const rowOrderPlus = () => {
       rowOrder = rowOrder + 1
@@ -41,12 +77,12 @@ export default class Modal extends React.Component {
         <div className={styles.calendarPanel}>
           <div className={styles.calendarHeader}>
 
-            <a className={styles.calendarPrevYearBtn} />
-            <a className={styles.calendarPrevMonthBtn} />
+            <a className={styles.calendarPrevYearBtn} onClick={this.handlePreYear} />
+            <a className={styles.calendarPrevMonthBtn} onClick={this.handlePreMonth} />
             <a className={styles.calendarMonthSelect}>{this.state.value.toLocaleString([], {month: "short"})}</a>
-            <a className={styles.calendarYearSelect}>{this.state.value.toLocaleString([], {day: "2-digit"})}</a>
-            <a className={styles.calendarNextMonthBtn} />
-            <a className={styles.calendarNextYearBtn} />
+            <a className={styles.calendarYearSelect}>{this.state.value.getFullYear()}</a>
+            <a className={styles.calendarNextMonthBtn} onClick={this.handleNextMonth} />
+            <a className={styles.calendarNextYearBtn} onClick={this.handleNextYear} />
           </div>
           <div className={styles.calendarBody}>
             <table className={styles.calendarTable}>
@@ -91,7 +127,7 @@ export default class Modal extends React.Component {
               </thead>
               <tbody>
               {
-                rows().map((row, index) => (
+                this.renderRows().map((row, index) => (
                   <tr role="row" className="row" key={'row' + index}>
                     {
                       row.map((col, index) => (
