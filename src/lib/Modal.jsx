@@ -45,9 +45,6 @@ export default class Modal extends React.Component {
   }
   handlePreMonth = () => {
     const preMonth = this.state.value.getMonth() - 1
-    if(!preMonth){
-      this.handleNextYear()
-    }
     const copyDate = new Date(this.state.value.getTime())
     const preYearDate = new Date(copyDate.setMonth(preMonth))
     this.setState({
