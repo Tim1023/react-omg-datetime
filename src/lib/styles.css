@@ -320,7 +320,7 @@ label + .j344 {
     line-height: 40px;
 }
 
-/*CALENDARBODY*/
+/*CALENDAR BODY*/
 .calendarBody {
     padding: 8px 12px;
 }
@@ -376,8 +376,245 @@ label + .j344 {
 .otherMonthDateColor {
     color: rgba(0, 0, 0, .25);
 }
-.calendarToday{
+
+.calendarToday {
     background: rgba(0, 0, 0, .25);
     color: #fff;
     border: 1px solid transparent;
+}
+
+/*CALENDER FOOTER*/
+.jss3242 {
+    flex: 0 0 auto;
+    margin: 8px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.jss3242 {
+    flex: 0 0 auto;
+    margin: 8px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.jss3243 {
+    margin: 0 4px;
+}
+
+.jss3244 {
+    min-width: 64px;
+}
+
+.jss245 {
+    color: inherit;
+    cursor: pointer;
+    margin: 0;
+    border: 0;
+    display: inline-flex;
+    padding: 0;
+    outline: none;
+    position: relative;
+    user-select: none;
+    align-items: center;
+    border-radius: 0;
+    vertical-align: middle;
+    justify-content: center;
+    -moz-appearance: none;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.jss245::-moz-focus-inner {
+    border-style: none;
+}
+
+.jss3245 {
+    color: rgba(0, 0, 0, 0.87);
+    padding: 8px 16px;
+    min-width: 50px;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    min-height: 36px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    line-height: 1.4em;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+.jss3245:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+@media (hover: none) {
+    .jss3245:hover {
+        background-color: transparent;
+    }
+}
+
+.jss3245:hover.jss3254 {
+    background-color: transparent;
+}
+
+.jss3246 {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+.jss3247 {
+    color: #3f51b5;
+}
+
+.jss3247:hover {
+    background-color: rgba(63, 81, 181, 0.12);
+}
+
+@media (hover: none) {
+    .jss3247:hover {
+        background-color: transparent;
+    }
+}
+
+.jss3248 {
+    color: #f50057;
+}
+
+.jss3248:hover {
+    background-color: rgba(245, 0, 87, 0.12);
+}
+
+@media (hover: none) {
+    .jss3248:hover {
+        background-color: transparent;
+    }
+}
+
+.jss3249 {
+    color: inherit;
+}
+
+.jss3250 {
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    background-color: #e0e0e0;
+}
+
+.jss3250.jss3251 {
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.jss3250:active {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.jss3250.jss3254 {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.jss3250:hover {
+    background-color: #d5d5d5;
+}
+
+@media (hover: none) {
+    .jss3250:hover {
+        background-color: #e0e0e0;
+    }
+}
+
+.jss3250:hover.jss3254 {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.jss3252 {
+    color: #fff;
+    background-color: #3f51b5;
+}
+
+.jss3252:hover {
+    background-color: #303f9f;
+}
+
+@media (hover: none) {
+    .jss3252:hover {
+        background-color: #3f51b5;
+    }
+}
+
+.jss3253 {
+    color: #fff;
+    background-color: #f50057;
+}
+
+.jss3253:hover {
+    background-color: #c51162;
+}
+
+@media (hover: none) {
+    .jss3253:hover {
+        background-color: #f50057;
+    }
+}
+
+.jss3254 {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.jss3255 {
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    min-width: 0;
+    font-size: 24px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+}
+
+.jss3255:active {
+    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+}
+
+.jss3256 {
+    width: 40px;
+    height: 40px;
+}
+
+.jss3257 {
+    padding: 7px 8px;
+    min-width: 64px;
+    font-size: 0.8125rem;
+    min-height: 32px;
+}
+
+.jss3258 {
+    padding: 8px 24px;
+    min-width: 112px;
+    font-size: 0.9375rem;
+    min-height: 40px;
+}
+
+.jss3259 {
+    width: 100%;
+}
+
+.jss254 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    position: absolute;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
 }

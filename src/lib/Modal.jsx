@@ -59,6 +59,11 @@ export default class Modal extends React.Component {
       value: preYearDate
     })
   }
+  handleNow = () => {
+    this.setState({
+      value: new Date()
+    })
+  }
 
   render() {
     let rowOrder = 0;
@@ -159,7 +164,36 @@ export default class Modal extends React.Component {
               </tbody>
             </table>
           </div>
-
+          <div className={styles.jss3242}>
+            <div className={styles.jss3243}>
+              <button tabIndex={0}
+                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      type="button"
+                      onClick={this.handleNow}
+                      aria-label="Now">
+                <span className={styles.jss3246}>Now</span>
+                <span className={styles.jss254} />
+              </button>
+            </div>
+            <div className={styles.jss3243}>
+              <button tabIndex={0}
+                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      type="button"
+                      aria-label="Cancel">
+                <span className={styles.jss3246}>Cancel</span>
+                <span className={styles.jss254} />
+              </button>
+            </div>
+            <div className={styles.jss3243}>
+              <button tabIndex={0}
+                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      type="button"
+                      aria-label="OK">
+                <span className={styles.jss3246}>OK</span>
+                <span className={styles.jss254} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
