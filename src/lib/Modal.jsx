@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./styles.css";
-
+import { array_chunks } from './helpers/array_chunk'
 
 export default class Modal extends React.Component {
 
@@ -13,6 +13,12 @@ export default class Modal extends React.Component {
 
 
   render() {
+    // const list = () => {
+    const days = new Date(this.state.value.getFullYear(), this.state.value.getMonth(), 0).getDate();
+    const daysArray = Array.from(new Array(days), (val, index) => index + 1);
+    const rows = array_chunks(daysArray, 7)
+
+    // }
     return (
       <div className={styles.calendarWrap}
            tabIndex={0}
@@ -24,8 +30,8 @@ export default class Modal extends React.Component {
 
             <a className={styles.calendarPrevYearBtn} />
             <a className={styles.calendarPrevMonthBtn} />
-            <a className={styles.calendarMonthSelect}>{this.state.value.toLocaleString([], { month: "short" })}</a>
-            <a className={styles.calendarYearSelect}>{this.state.value.toLocaleString([], { day: "2-digit" })}</a>
+            <a className={styles.calendarMonthSelect}>{this.state.value.toLocaleString([], {month: "short"})}</a>
+            <a className={styles.calendarYearSelect}>{this.state.value.toLocaleString([], {day: "2-digit"})}</a>
             <a className={styles.calendarNextMonthBtn} />
             <a className={styles.calendarNextYearBtn} />
           </div>
@@ -70,6 +76,21 @@ export default class Modal extends React.Component {
                 </th>
               </tr>
               </thead>
+              <tbody>
+              {
+                rows.map((row,index) => (
+                  <tr role="row" className="row" key={'row'+index}>
+                    {
+                      row.map((col,index) => (
+                        <td role="gridcell"  className={styles.calendarCell} key={'col'+index}>
+                          <div className={styles.calendarDate} aria-selected="false" aria-disabled="false">{col}</div>
+                        </td>
+                      ))
+                    }
+                  </tr>
+                ))
+              }
+              </tbody>
             </table>
           </div>
 
