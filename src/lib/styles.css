@@ -370,8 +370,14 @@ label + .j344 {
 .calendarDate:hover {
     background: #e6f7ff;
     cursor: pointer;
+    color: black;
 }
 
 .otherMonthDateColor {
     color: rgba(0, 0, 0, .25);
+}
+.calendarToday{
+    background: rgba(0, 0, 0, .25);
+    color: #fff;
+    border: 1px solid transparent;
 }
