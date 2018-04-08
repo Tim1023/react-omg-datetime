@@ -66,11 +66,25 @@ export default class Modal extends React.Component {
     })
   }
 
-  handleSelectedMonthClick = (col) => {
+  handleSelectedMonthClick = (date) => {
     const copyDate = new Date(this.state.value.getTime())
-    const selectedDate = new Date(copyDate.setDate(col))
+    const selectedDate = new Date(copyDate.setDate(date))
     this.setState({
       selectedDate: selectedDate
+    })
+  }
+  handleOtherMonthClick = (date) => {
+    const copyDate = new Date(this.state.value.getTime())
+    const monthChange = date > 15 ?
+      this.state.value.getMonth() - 1 :
+      this.state.value.getMonth() + 1
+    console.log(monthChange)
+    const AfterMonthDate = new Date(copyDate.setMonth(monthChange))
+    console.log(AfterMonthDate)
+    const selectedDate = new Date(AfterMonthDate.setDate(date))
+    this.setState({
+      value: selectedDate,
+      selectedDate: selectedDate,
     })
   }
 
@@ -150,6 +164,8 @@ export default class Modal extends React.Component {
                               && new Date().getMonth() === this.state.value.getMonth()
                               && new Date().getDate() === col ?
                                 this.state.selectedDate
+                                && this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
+                                && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
                                        onClick={() => this.handleSelectedMonthClick(col)}
@@ -162,6 +178,8 @@ export default class Modal extends React.Component {
                                        aria-disabled="false">{col}</div> :
                                 //Selected Month Date
                                 this.state.selectedDate
+                                && this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
+                                && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
                                        onClick={() => this.handleSelectedMonthClick(col)}
@@ -177,6 +195,9 @@ export default class Modal extends React.Component {
                               && new Date().getMonth() === this.state.value.getMonth() + 1
                               && new Date().getDate() === col ?
                                 <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                     onClick={() => {
+                                       this.handleOtherMonthClick(col)
+                                     }}
                                      aria-selected="false"
                                      aria-disabled="false">{col}</div> :
                                 //Before Selected Month Today
@@ -185,9 +206,15 @@ export default class Modal extends React.Component {
                                 && new Date().getMonth() === this.state.value.getMonth() - 1
                                 && new Date().getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                       onClick={() => {
+                                         this.handleOtherMonthClick(col)
+                                       }}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
                                   <div className={styles.calendarDate + ' ' + styles.otherMonthDateColor}
+                                       onClick={() => {
+                                         this.handleOtherMonthClick(col)
+                                       }}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div>
                           }
