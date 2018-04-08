@@ -261,8 +261,9 @@ label + .j344 {
     border-bottom: 1px solid #e8e8e8;
 }
 
-.calendarHeader a:hover {
+.calendarWrap a:hover {
     color: #1976d2;
+    cursor: pointer;
 }
 
 .calendarPrevYearBtn,
@@ -322,7 +323,7 @@ label + .j344 {
 
 /*CALENDAR BODY*/
 .calendarBody {
-    padding: 8px 12px;
+    padding: 8px 12px 0 12px;
 }
 
 .calendarTable {
@@ -628,4 +629,50 @@ label + .j344 {
     overflow: hidden;
     border-radius: inherit;
     pointer-events: none;
+}
+
+/*TIME INPUT*/
+.timeInputWrap {
+    text-align: center;
+    font-size: x-large;
+}
+
+.calendarPrevHourBtn,
+.calendarPrevMinBtn,
+.calendarPrevSecBtn,
+.calendarNextHourBtn,
+.calendarNextMinBtn,
+.calendarNextSecBtn {
+    color: rgba(0, 0, 0, .45);
+    font-family: Arial, Hiragino Sans GB, Microsoft Yahei, Microsoft Sans Serif, sans-serif;
+    padding: 0 5px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.calendarPrevHourBtn::after {
+    content: "\AB";
+}
+
+.calendarPrevMinBtn::after {
+    content: "\2039";
+}
+
+.calendarNextMinBtn::after {
+    content: "\203A";
+}
+
+.calendarNextHourBtn::after {
+    content: "\BB";
+}
+.calendarPrevSecBtn::after {
+    content: "-";
+}
+.calendarNextSecBtn::after {
+    content: "+";
+}
+
+.timeInput {
+    margin: 0 15px;
 }

@@ -43,20 +43,18 @@ export default class DateTimeInput extends Component {
       value: val,
       open: false,
       labelClass: [styles.j337, styles.j332, styles.j333, styles.j336, styles.j335].join(' '),
-      displayValue: val.toLocaleString([], {
+      displayValue: this.props.seconds ? val.toLocaleString() : val.toLocaleString([], {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       })
     })
-  }
-  trueChange = () => {
-    console.log(this.state)
-    this.state.value !== this.state.tempValue ?
+    val !== this.state.tempValue ?
       this.props.onChange(this.state.value) : ''
   }
+
 
   render() {
     return (
@@ -66,11 +64,10 @@ export default class DateTimeInput extends Component {
             DateTimePicker</label>
           <div className={[styles.j343, styles.j344, styles.j347].join(' ')}>
             <input className={styles.input}
-                   value={this.state.displayValue}
-                   onChange={this.trueChange} />
+                   value={this.state.displayValue} />
           </div>
         </div>
-        <Modal open={this.state.open} onSubmit={this.onSubmit} value={this.state.value} seconds={this.props.seconds}/>
+        <Modal open={this.state.open} onSubmit={this.onSubmit} value={this.state.value} seconds={this.props.seconds} />
       </div>
     )
   }

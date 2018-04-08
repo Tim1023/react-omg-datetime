@@ -60,6 +60,54 @@ export default class Modal extends React.Component {
       value: preYearDate
     })
   }
+  handlePreHour = () => {
+    const preHour = this.state.selectedDate.getHours() - 1 > -1 ? this.state.selectedDate.getHours() - 1 : 23
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preHourDate = new Date(copyDate.setHours(preHour))
+    this.setState({
+      selectedDate: preHourDate,
+    })
+  }
+  handleNextHour = () => {
+    const preHour = this.state.selectedDate.getHours() + 1 < 24 ? this.state.selectedDate.getHours() + 1 : 0
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preHourDate = new Date(copyDate.setHours(preHour))
+    this.setState({
+      selectedDate: preHourDate,
+    })
+  }
+  handleNextMin = () => {
+    const preMin = this.state.selectedDate.getMinutes() + 1 < 60 ? this.state.selectedDate.getMinutes() + 1 : 0
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preMinDate = new Date(copyDate.setMinutes(preMin))
+    this.setState({
+      selectedDate: preMinDate,
+    })
+  }
+  handlePreMin = () => {
+    const preMin = this.state.selectedDate.getMinutes() - 1 > -1 ? this.state.selectedDate.getMinutes() - 1 : 59
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preMinDate = new Date(copyDate.setMinutes(preMin))
+    this.setState({
+      selectedDate: preMinDate,
+    })
+  }
+  handlePreSec = () => {
+    const preSec = this.state.selectedDate.getSeconds() - 1 > -1 ? this.state.selectedDate.getSeconds() - 1 : 59
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preSecDate = new Date(copyDate.setSeconds(preSec))
+    this.setState({
+      selectedDate: preSecDate,
+    })
+  }
+  handleNextSec = () => {
+    const preSec = this.state.selectedDate.getSeconds() + 1 < 60 ? this.state.selectedDate.getSeconds() + 1 : 0
+    const copyDate = new Date(this.state.selectedDate.getTime())
+    const preSecDate = new Date(copyDate.setSeconds(preSec))
+    this.setState({
+      selectedDate: preSecDate,
+    })
+  }
   handleNow = (e) => {
     e.preventDefault()
     const dateNow = new Date()
@@ -236,14 +284,33 @@ export default class Modal extends React.Component {
                 ))
               }
               </tbody>
+              <tfoot>
+              <tr>
+                <td colSpan={7} className={styles.timeInputWrap}>
+                  <a className={styles.calendarPrevHourBtn} onClick={this.handlePreHour} />
+                  <a className={styles.calendarPrevMinBtn} onClick={this.handlePreMin}/>
+                  <a className={styles.calendarPrevSecBtn}
+                     style={{display: this.props.seconds ? 'inline-block' : 'none'}}
+                     onClick={this.handlePreSec}/>
+                  <span className={styles.timeInput}>
+                  {this.props.seconds ? this.state.selectedDate.toLocaleTimeString() :
+                    this.state.selectedDate.toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}
+                  </span>
+                  <a className={styles.calendarNextSecBtn}
+                     style={{display: this.props.seconds ? 'inline-block' : 'none'}}
+                     onClick={this.handleNextSec}/>
+                  <a className={styles.calendarNextMinBtn} onClick={this.handleNextMin}/>
+                  <a className={styles.calendarNextHourBtn}  onClick={this.handleNextHour}/>
+                </td>
+              </tr>
+
+              </tfoot>
             </table>
           </div>
-          {/*TIME INPUT*/}
-          <div>
-            <span>
-              {this.state.selectedDate.toLocaleTimeString()}
-            </span>
-          </div>
+
           <div className={styles.jss3242}>
             <div className={styles.jss3243}>
               <button tabIndex={0}
