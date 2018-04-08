@@ -44,4 +44,6 @@ render: function() {
 | **onChange** | `function` | empty function | Callback trigger when the date changes. The callback receives the selected `Date` object as only parameter. |
 | **seconds** | `boolean` | `false` | When `true` seconds view and config will be reprenseted.
 
+### [MIT Licensed](LICENSE.md)
 
+Welcome to fork and clone.
