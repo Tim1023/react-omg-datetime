@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import DateTimeInput from "../../lib";
-
+import "../lib/styles.css"
 const onChange = (value) => {
   console.log(value)
 }

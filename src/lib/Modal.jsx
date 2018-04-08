@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from "./styles.css";
 import { array_chunks } from './helpers/array_chunk'
 
 export default class Modal extends React.Component {
@@ -152,59 +151,59 @@ export default class Modal extends React.Component {
       rowOrder = rowOrder + 1
     }
     return (
-      <div className={styles.calendarWrap}
+      <div className="calendarWrap"
            tabIndex={0}
         // onBlur={this.handleCancel}
         // TODO MODAL ON BLUR
            style={{display: this.props.open ? 'block' : 'none'}}
       >
         {/*DATE INPUT*/}
-        <div className={styles.calendarPanel}>
-          <div className={styles.calendarHeader}>
+        <div className="calendarPanel">
+          <div className="calendarHeader">
 
-            <a className={styles.calendarPrevYearBtn} onClick={this.handlePreYear} />
-            <a className={styles.calendarPrevMonthBtn} onClick={this.handlePreMonth} />
-            <a className={styles.calendarMonthSelect}>{this.state.value.toLocaleString([], {month: "short"})}</a>
-            <a className={styles.calendarYearSelect}>{this.state.value.getFullYear()}</a>
-            <a className={styles.calendarNextMonthBtn} onClick={this.handleNextMonth} />
-            <a className={styles.calendarNextYearBtn} onClick={this.handleNextYear} />
+            <a className="calendarPrevYearBtn" onClick={this.handlePreYear} />
+            <a className="calendarPrevMonthBtn" onClick={this.handlePreMonth} />
+            <a className="calendarMonthSelect">{this.state.value.toLocaleString([], {month: "short"})}</a>
+            <a className="calendarYearSelect">{this.state.value.getFullYear()}</a>
+            <a className="calendarNextMonthBtn" onClick={this.handleNextMonth} />
+            <a className="calendarNextYearBtn" onClick={this.handleNextYear} />
           </div>
-          <div className={styles.calendarBody}>
-            <table className={styles.calendarTable}>
+          <div className="calendarBody">
+            <table className="calendarTable">
               <thead>
               <tr role={'row'}>
-                <th role={'columnHeader'} title={'Sun'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Sun'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Su
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Mon'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Mon'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Mo
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Tue'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Tue'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Tu
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Wed'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Wed'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   We
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Thu'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Thu'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Th
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Fri'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Fri'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Fr
                 </span>
                 </th>
-                <th role={'columnHeader'} title={'Sat'} className={styles.calendarColumnHeader}>
-                <span className={styles.calendarColumnHeaderInner}>
+                <th role={'columnHeader'} title={'Sat'} className="calendarColumnHeader">
+                <span className="calendarColumnHeaderInner">
                   Sa
                 </span>
                 </th>
@@ -216,7 +215,7 @@ export default class Modal extends React.Component {
                   <tr role="row" className="row" key={'row' + index}>
                     {
                       row.map((col, index) => (
-                        <td role="gridCell" className={styles.calendarCell} key={'col' + index}>
+                        <td role="gridCell" className="calendarCell" key={'col' + index}>
                           {
                             col - rowOrder > -6 && col - rowOrder < 2 ?
                               //Selected Month
@@ -226,12 +225,12 @@ export default class Modal extends React.Component {
                                 this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
                                 && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
-                                  <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
+                                  <div className="calendarDate selectedDateColor"
                                        onClick={() => this.handleSelectedMonthClick(col)}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
                                   //Selected Month Today
-                                  <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                  <div className="calendarDate calendarToday"
                                        onClick={() => this.handleSelectedMonthClick(col)}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
@@ -239,11 +238,11 @@ export default class Modal extends React.Component {
                                 this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
                                 && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
-                                  <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
+                                  <div className="calendarDate selectedDateColor"
                                        onClick={() => this.handleSelectedMonthClick(col)}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
-                                  <div className={styles.calendarDate}
+                                  <div className="calendarDate"
                                        onClick={() => this.handleSelectedMonthClick(col)}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
@@ -252,7 +251,7 @@ export default class Modal extends React.Component {
                               && new Date().getFullYear() === this.state.value.getFullYear()
                               && new Date().getMonth() === this.state.value.getMonth() + 1
                               && new Date().getDate() === col ?
-                                <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                <div className="calendarDate calendarToday"
                                      onClick={() => {
                                        this.handleOtherMonthClick(col)
                                      }}
@@ -263,13 +262,13 @@ export default class Modal extends React.Component {
                                 && new Date().getFullYear() === this.state.value.getFullYear()
                                 && new Date().getMonth() === this.state.value.getMonth() - 1
                                 && new Date().getDate() === col ?
-                                  <div className={styles.calendarDate + ' ' + styles.calendarToday}
+                                  <div className="calendarDate calendarToday"
                                        onClick={() => {
                                          this.handleOtherMonthClick(col)
                                        }}
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
-                                  <div className={styles.calendarDate + ' ' + styles.otherMonthDateColor}
+                                  <div className="calendarDate otherMonthDateColor"
                                        onClick={() => {
                                          this.handleOtherMonthClick(col)
                                        }}
@@ -286,24 +285,24 @@ export default class Modal extends React.Component {
               </tbody>
               <tfoot>
               <tr>
-                <td colSpan={7} className={styles.timeInputWrap}>
-                  <a className={styles.calendarPrevHourBtn} onClick={this.handlePreHour} />
-                  <a className={styles.calendarPrevMinBtn} onClick={this.handlePreMin}/>
-                  <a className={styles.calendarPrevSecBtn}
+                <td colSpan={7} className="timeInputWrap">
+                  <a className="calendarPrevHourBtn" onClick={this.handlePreHour} />
+                  <a className="calendarPrevMinBtn" onClick={this.handlePreMin}/>
+                  <a className="calendarPrevSecBtn"
                      style={{display: this.props.seconds ? 'inline-block' : 'none'}}
                      onClick={this.handlePreSec}/>
-                  <span className={styles.timeInput}>
+                  <span className="timeInput">
                   {this.props.seconds ? this.state.selectedDate.toLocaleTimeString() :
                     this.state.selectedDate.toLocaleTimeString([], {
                       hour: '2-digit',
                       minute: '2-digit'
                     })}
                   </span>
-                  <a className={styles.calendarNextSecBtn}
+                  <a className="calendarNextSecBtn"
                      style={{display: this.props.seconds ? 'inline-block' : 'none'}}
                      onClick={this.handleNextSec}/>
-                  <a className={styles.calendarNextMinBtn} onClick={this.handleNextMin}/>
-                  <a className={styles.calendarNextHourBtn}  onClick={this.handleNextHour}/>
+                  <a className="calendarNextMinBtn" onClick={this.handleNextMin}/>
+                  <a className="calendarNextHourBtn"  onClick={this.handleNextHour}/>
                 </td>
               </tr>
 
@@ -311,36 +310,36 @@ export default class Modal extends React.Component {
             </table>
           </div>
 
-          <div className={styles.jss3242}>
-            <div className={styles.jss3243}>
+          <div className="jss3242">
+            <div className="jss3243">
               <button tabIndex={0}
-                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      className="jss245 jss3245 jss3247 jss3244"
                       type="button"
                       onClick={this.handleNow}
                       aria-label="Now">
-                <span className={styles.jss3246}>Now</span>
-                <span className={styles.jss254} />
+                <span className="jss3246">Now</span>
+                <span className="jss254" />
               </button>
             </div>
-            <div className={styles.jss3243}>
+            <div className="jss3243">
               <button tabIndex={0}
-                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      className="jss245 jss3245 jss3247 jss3244"
                       type="button"
                       onClick={this.handleCancel}
                       aria-label="Cancel">
-                <span className={styles.jss3246}>Cancel</span>
-                <span className={styles.jss254} />
+                <span className="jss3246">Cancel</span>
+                <span className="jss254" />
               </button>
             </div>
 
-            <div className={styles.jss3243}>
+            <div className="jss3243">
               <button tabIndex={0}
-                      className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
+                      className="jss245 jss3245 jss3247 jss3244"
                       type="button"
                       onClick={this.handleSubmit}
                       aria-label="OK">
-                <span className={styles.jss3246}>OK</span>
-                <span className={styles.jss254} />
+                <span className="jss3246">OK</span>
+                <span className="jss254" />
               </button>
             </div>
           </div>
