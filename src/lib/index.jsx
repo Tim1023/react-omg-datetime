@@ -20,9 +20,9 @@ export default class DateTimeInput extends Component {
     this.props.seconds ? this.setState({displayValue: this.state.value.toLocaleString()})
       : this.setState({
         displayValue: this.state.value.toLocaleString([], {
-          year:'numeric',
-          month:'numeric',
-          day:'numeric',
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
           hour: '2-digit',
           minute: '2-digit'
         })
@@ -37,10 +37,19 @@ export default class DateTimeInput extends Component {
       labelClass: [styles.j337, styles.j332, styles.j333, styles.j336, styles.j335, styles.j338].join(' '),
     })
   }
-  onClose = () => {
+
+  onSubmit = (val) => {
     this.setState({
+      value: val,
       open: false,
       labelClass: [styles.j337, styles.j332, styles.j333, styles.j336, styles.j335].join(' '),
+      displayValue: val.toLocaleString([], {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
     })
   }
   trueChange = () => {
@@ -61,7 +70,7 @@ export default class DateTimeInput extends Component {
                    onChange={this.trueChange} />
           </div>
         </div>
-        <Modal open={this.state.open} onClose={this.onClose} value={this.state.value} />
+        <Modal open={this.state.open} onSubmit={this.onSubmit} value={this.state.value} />
       </div>
     )
   }

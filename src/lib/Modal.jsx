@@ -8,7 +8,7 @@ export default class Modal extends React.Component {
     super(props);
     this.state = {
       ...props,
-      selectedDate: null,
+      selectedDate: this.props.value,
     }
   }
 
@@ -60,9 +60,11 @@ export default class Modal extends React.Component {
       value: preYearDate
     })
   }
-  handleNow = () => {
+  handleNow = (e) => {
+    e.preventDefault()
     this.setState({
-      value: new Date()
+      selectedDate: new Date(),
+      value: new Date(),
     })
   }
 
@@ -78,14 +80,20 @@ export default class Modal extends React.Component {
     const monthChange = date > 15 ?
       this.state.value.getMonth() - 1 :
       this.state.value.getMonth() + 1
-    console.log(monthChange)
     const AfterMonthDate = new Date(copyDate.setMonth(monthChange))
-    console.log(AfterMonthDate)
     const selectedDate = new Date(AfterMonthDate.setDate(date))
     this.setState({
       value: selectedDate,
       selectedDate: selectedDate,
     })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.onSubmit(this.state.selectedDate)
+  }
+  handleCancel = (e) => {
+    e.preventDefault()
+    this.props.onSubmit(this.props.value)
   }
 
   render() {
@@ -96,7 +104,8 @@ export default class Modal extends React.Component {
     return (
       <div className={styles.calendarWrap}
            tabIndex={0}
-           onBlur={this.props.onClose}
+        // onBlur={this.handleCancel}
+        // TODO MODAL ON BLUR
            style={{display: this.props.open ? 'block' : 'none'}}
       >
         <div className={styles.calendarPanel}>
@@ -163,8 +172,7 @@ export default class Modal extends React.Component {
                               new Date().getFullYear() === this.state.value.getFullYear()
                               && new Date().getMonth() === this.state.value.getMonth()
                               && new Date().getDate() === col ?
-                                this.state.selectedDate
-                                && this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
+                                this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
                                 && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
@@ -177,8 +185,7 @@ export default class Modal extends React.Component {
                                        aria-selected="false"
                                        aria-disabled="false">{col}</div> :
                                 //Selected Month Date
-                                this.state.selectedDate
-                                && this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
+                                this.state.selectedDate.getFullYear() === this.state.value.getFullYear()
                                 && this.state.selectedDate.getMonth() === this.state.value.getMonth()
                                 && this.state.selectedDate.getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.selectedDateColor}
@@ -243,15 +250,18 @@ export default class Modal extends React.Component {
               <button tabIndex={0}
                       className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
                       type="button"
+                      onClick={this.handleCancel}
                       aria-label="Cancel">
                 <span className={styles.jss3246}>Cancel</span>
                 <span className={styles.jss254} />
               </button>
             </div>
+
             <div className={styles.jss3243}>
               <button tabIndex={0}
                       className={[styles.jss245, styles.jss3245, styles.jss3247, styles.jss3244].join(' ')}
                       type="button"
+                      onClick={this.handleSubmit}
                       aria-label="OK">
                 <span className={styles.jss3246}>OK</span>
                 <span className={styles.jss254} />
