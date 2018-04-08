@@ -14,8 +14,18 @@ export default class Modal extends React.Component {
 
   render() {
     // const list = () => {
-    const days = new Date(this.state.value.getFullYear(), this.state.value.getMonth(), 0).getDate();
-    const daysArray = Array.from(new Array(days), (val, index) => index + 1);
+    const month = new Date(this.state.value.getFullYear(), this.state.value.getMonth() + 1, 0)
+    const preMonth = new Date(this.state.value.getFullYear(), this.state.value.getMonth(), 0)
+    const dates = month.getDate()
+    const preDates = preMonth.getDate()
+    const firstDayInWeek = new Date(month.setDate(1)).getDay()
+    const daysArray = Array.from(new Array(dates), (val, index) => index + 1)
+    for (let i = 0; i < firstDayInWeek; i++) {
+      daysArray.unshift(preDates - i)
+    }
+    for (let i = 0; daysArray.length < 42; i++) {
+      daysArray.push(i+1)
+    }
     const rows = array_chunks(daysArray, 7)
 
     // }
@@ -78,11 +88,11 @@ export default class Modal extends React.Component {
               </thead>
               <tbody>
               {
-                rows.map((row,index) => (
-                  <tr role="row" className="row" key={'row'+index}>
+                rows.map((row, index) => (
+                  <tr role="row" className="row" key={'row' + index}>
                     {
-                      row.map((col,index) => (
-                        <td role="gridcell"  className={styles.calendarCell} key={'col'+index}>
+                      row.map((col, index) => (
+                        <td role="gridcell" className={styles.calendarCell} key={'col' + index}>
                           <div className={styles.calendarDate} aria-selected="false" aria-disabled="false">{col}</div>
                         </td>
                       ))
