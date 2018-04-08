@@ -65,6 +65,10 @@ export default class Modal extends React.Component {
     })
   }
 
+  handleSelectedMonthClick = () => {
+
+  }
+
   render() {
     let rowOrder = 0;
     const rowOrderPlus = () => {
@@ -136,23 +140,38 @@ export default class Modal extends React.Component {
                         <td role="gridCell" className={styles.calendarCell} key={'col' + index}>
                           {
                             col - rowOrder > -6 && col - rowOrder < 2 ?
-                              new Date().getMonth() === this.state.value.getMonth() && new Date().getDate() === col ?
+                              //Selected Month
+                              new Date().getFullYear() === this.state.value.getFullYear()
+                              && new Date().getMonth() === this.state.value.getMonth()
+                              && new Date().getDate() === col ?
+                                //Selected Month Today
                                 <div className={styles.calendarDate + ' ' + styles.calendarToday}
-                                     aria-selected="false" aria-disabled="false">{col}</div> :
-                                <div className={styles.calendarDate} aria-selected="false"
+                                     onClick={this.handleSelectedMonthClick}
+                                     aria-selected="false"
                                      aria-disabled="false">{col}</div> :
+                                //Selected Month Date
+                                <div className={styles.calendarDate}
+                                     aria-selected="false"
+                                     aria-disabled="false">{col}</div> :
+                              //After Selected Month Today
                               col - rowOrder < -5
+                              && new Date().getFullYear() === this.state.value.getFullYear()
                               && new Date().getMonth() === this.state.value.getMonth() + 1
                               && new Date().getDate() === col ?
                                 <div className={styles.calendarDate + ' ' + styles.calendarToday}
-                                     aria-selected="false" aria-disabled="false">{col}</div> :
+                                     aria-selected="false"
+                                     aria-disabled="false">{col}</div> :
+                                //Before Selected Month Today
                                 col - rowOrder > 1
+                                && new Date().getFullYear() === this.state.value.getFullYear()
                                 && new Date().getMonth() === this.state.value.getMonth() - 1
                                 && new Date().getDate() === col ?
                                   <div className={styles.calendarDate + ' ' + styles.calendarToday}
-                                       aria-selected="false" aria-disabled="false">{col}</div> :
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div> :
                                   <div className={styles.calendarDate + ' ' + styles.otherMonthDateColor}
-                                       aria-selected="false" aria-disabled="false">{col}</div>
+                                       aria-selected="false"
+                                       aria-disabled="false">{col}</div>
                           }
                           {rowOrderPlus()}
                         </td>
