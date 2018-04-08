@@ -62,9 +62,11 @@ export default class Modal extends React.Component {
   }
   handleNow = (e) => {
     e.preventDefault()
+    const dateNow = new Date()
+    const selectedDate = this.props.seconds ? dateNow : new Date(dateNow.setSeconds(0))
     this.setState({
-      selectedDate: new Date(),
-      value: new Date(),
+      selectedDate: selectedDate,
+      value: selectedDate,
     })
   }
 
@@ -108,6 +110,7 @@ export default class Modal extends React.Component {
         // TODO MODAL ON BLUR
            style={{display: this.props.open ? 'block' : 'none'}}
       >
+        {/*DATE INPUT*/}
         <div className={styles.calendarPanel}>
           <div className={styles.calendarHeader}>
 
@@ -234,6 +237,12 @@ export default class Modal extends React.Component {
               }
               </tbody>
             </table>
+          </div>
+          {/*TIME INPUT*/}
+          <div>
+            <span>
+              {this.state.selectedDate.toLocaleTimeString()}
+            </span>
           </div>
           <div className={styles.jss3242}>
             <div className={styles.jss3243}>

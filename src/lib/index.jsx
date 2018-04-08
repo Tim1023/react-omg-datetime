@@ -70,7 +70,7 @@ export default class DateTimeInput extends Component {
                    onChange={this.trueChange} />
           </div>
         </div>
-        <Modal open={this.state.open} onSubmit={this.onSubmit} value={this.state.value} />
+        <Modal open={this.state.open} onSubmit={this.onSubmit} value={this.state.value} seconds={this.props.seconds}/>
       </div>
     )
   }
